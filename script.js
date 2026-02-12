@@ -135,6 +135,11 @@ function generateKeyboard() {
 function startGame() {
     const p1Name = document.getElementById('player1Name').value.trim();
     const p2Name = document.getElementById('player2Name').value.trim();
+
+    if (p1Name === '' && p2Name === '') {
+        alert('Please enter at least one player name to start the game.');
+        return;
+    }
     
     gameState.player1.name = p1Name || 'Player 1';
     gameState.player2.name = p2Name || 'Player 2';
@@ -146,6 +151,7 @@ function startGame() {
     
     nextRound();
 }
+
 
 function nextRound() {
     if (wordBank.length === 0) {
