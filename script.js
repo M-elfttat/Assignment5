@@ -25,13 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
     const themeIcon = document.querySelector('.theme-icon');
-    
-    if (themeIcon.textContent === '🌙') {
-        themeIcon.textContent = '☀️';
-    } else {
-        themeIcon.textContent = '🌙';
-    }
+    themeIcon.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 }
 
 function switchTab(tabName) {
