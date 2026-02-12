@@ -287,7 +287,7 @@ function checkGameStatus() {
 
 function gameWon() {
     gameState.gameActive = false;
-    
+
     if (gameState.currentPlayer === 1) {
         gameState.player2.score += 10;
         document.getElementById('score2').textContent = gameState.player2.score;
@@ -295,16 +295,20 @@ function gameWon() {
         gameState.player1.score += 10;
         document.getElementById('score1').textContent = gameState.player1.score;
     }
-    
+
     const statusDiv = document.getElementById('gameStatus');
     const statusMsg = document.getElementById('statusMessage');
-    
+
     const winnerName = gameState.currentPlayer === 1 ? 
         gameState.player2.name : gameState.player1.name;
-    
+
     statusMsg.textContent = `🎉 ${winnerName} won! The word was: ${gameState.currentWord}`;
     statusDiv.classList.add('show', 'winner');
+
+    // ✅ FIX: Switch player after win
+    gameState.currentPlayer = gameState.currentPlayer === 1 ? 2 : 1;
 }
+
 
 function gameLost() {
     gameState.gameActive = false;
